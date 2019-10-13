@@ -8,6 +8,49 @@
 			"Default": "ClientWP-Initial"
 		}
 	},
-	"Resources": {},
-	"Outputs": {}
+	"Resources": {
+		"ClientWPVPC": {
+			"Type": "AWS::EC2::VPC",
+			"Properties": {
+				"CidrBlock": "10.0.0.0/16",
+				"EnableDnsSupport": true,
+				"EnableDnsHostnames": true,
+				"Tags": [
+					{
+						"Key": "Name",
+						"Value": {
+							"Fn::Sub": "${AWS::StackName}-VPC"
+						}
+					}
+				]
+			}
+		}
+	},
+	"Outputs": {
+		"InitialStackName": {
+			"Description": "Initial Stack name.",
+			"Value": {
+				"Fn::Sub": "${AWS::StackName}"
+			},
+			"Export": {
+				"Name": {
+					"Fn::Sub": "InitialStackName"
+				}
+			}
+		},
+		"ClientWPVPC": {
+			"Description": "The ID of the created VPC",
+			"Value": {
+				"Fn::GetAtt": [
+					"ClientWPVPC",
+					"VPCId"
+				]
+			},
+			"Export": {
+				"Name": {
+					"Fn::Sub": "${AWS::StackName}-VPC-ID"
+				}
+			}
+		}
+	}
 }
