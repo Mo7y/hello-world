@@ -1,0 +1,13 @@
+{
+	"AWSTemplateFormatVersion": "2010-09-09",
+	"Description": "This template deploys basic configuration to initiate Client's WordPress sites Infrastructure",
+	"Parameters": {
+		"EnvironmentName": {
+			"Description": "WordPress Client's Infrastructure Stack",
+			"Type": "String",
+			"Default": "ClientWP-Initial"
+		}
+	},
+	"Resources": {},
+	"Outputs": {}
+}
